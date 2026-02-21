@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliana Asisten · Bot WhatsApp Premium</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #0a0c0f;
+            background-image: 
+                radial-gradient(white 1.2px, transparent 1.2px),
+                radial-gradient(white 0.8px, transparent 0.8px);
+            background-size: 60px 60px, 80px 80px;
+            background-position: 0 0, 30px 30px;
+            background-color: #0b0d10;
+            color: #f0f3f8;
+            line-height: 1.6;
+        }
+
+        .overlay {
+            background: rgba(2, 5, 10, 0.6);
+            backdrop-filter: blur(1px);
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* VIDEO SECTION - LANGSUNG PAKAI TAUTAN ANDA */
+        .video-hero {
+            margin-bottom: 2.5rem;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 2px solid rgba(245, 197, 66, 0.5);
+            background: #000;
+            box-shadow: 0 0 30px rgba(245, 197, 66, 0.3);
+        }
+        .video-hero video {
+            width: 100%;
+            height: auto;
+            max-height: 450px;
+            display: block;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+        /* ========== */
+
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            background: rgba(10, 15, 25, 0.7);
+            border-radius: 2.5rem;
+            padding: 2rem 2.5rem;
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-text {
+            flex: 1 1 280px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #fff4d0, #ffd966);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .tagline {
+            font-size: 1.2rem;
+            color: #b0c4de;
+            margin: 0.5rem 0 1.5rem;
+            border-left: 4px solid #f5c542;
+            padding-left: 1rem;
+        }
+
+        .hero-text .info-bot {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 1.2rem 1.5rem;
+            border-radius: 2rem;
+            border: 1px dashed #3a4a5f;
+        }
+
+        .hero-text .info-bot i {
+            color: #f5c542;
+            margin-right: 8px;
+        }
+
+        .bot-preview {
+            flex: 0 0 280px;
+            text-align: center;
+        }
+
+        .bot-preview img {
+            max-width: 100%;
+            border-radius: 2rem;
+            box-shadow: 0 20px 30px -5px #000, 0 0 0 2px rgba(245, 197, 66, 0.4);
+            transition: 0.2s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .bot-preview p {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            color: #cdd9e9;
+            background: rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            backdrop-filter: blur(2px);
+            border: 1px solid #3c4b5a;
+        }
+
+        /* menu fitur */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 500;
+            margin: 2.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .section-title span {
+            background: #f5c542;
+            width: 60px;
+            height: 4px;
+            border-radius: 4px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .menu-card {
+            background: rgba(18, 25, 40, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 200, 80, 0.2);
+            border-radius: 2.2rem;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.25s;
+            box-shadow: 0 15px 25px -15px black;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            border-color: #f5c542;
+            box-shadow: 0 20px 30px -10px #000, 0 0 20px rgba(245, 197, 66, 0.3);
+        }
+
+        .menu-icon {
+            font-size: 3rem;
+            color: #fad96b;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 8px #b57c1a);
+        }
+
+        .menu-card h3 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #fff7e6;
+            margin-bottom: 0.6rem;
+        }
+
+        .menu-card p {
+            color: #b6c7db;
+            font-size: 0.95rem;
+            border-top: 1px solid #2f3e55;
+            padding-top: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        /* sewa bot heading */
+        .sewa-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 3rem 0 1.5rem;
+        }
+        .sewa-head h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            background: linear-gradient(145deg, #ffe49e, #f5b81b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .sewa-head i {
+            color: #ffd966;
+            font-size: 2.2rem;
+            opacity: 0.8;
+        }
+
+        /* list harga - SEKARANG BISA DIKLIK */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .price-card {
+            background: #111a24;
+            border-radius: 2rem;
+            padding: 2rem 1rem;
+            text-align: center;
+            border: 1px solid #3d4f62;
+            backdrop-filter: blur(2px);
+            transition: 0.2s;
+            box-shadow: 0 10px 20px -10px black;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer; /* menandakan bisa diklik */
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .price-card::before {
+            content: "⭐";
+            position: absolute;
+            top: -10px;
+            right: -5px;
+            font-size: 2rem;
+            opacity: 0.2;
+            transform: rotate(20deg);
+        }
+
+        .price-card:hover {
+            border-color: #f5b342;
+            background: #14202e;
+            transform: scale(1.02);
+        }
+
+        .price-card .day {
+            font-size: 1.7rem;
+            font-weight: 600;
+            color: #ffe3a3;
+            margin-bottom: 1rem;
+        }
+
+        .price-card .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: white;
+            background: #1f2e3f;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid #b5944b;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .price-card .price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #c5d0db;
+        }
+
+        .price-card .remark {
+            color: #96aec9;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .price-card.permanent {
+            background: #1c2635;
+            border: 2px solid #f5c542;
+            box-shadow: 0 0 20px #9e7b2e4d;
+        }
+
+        .permanent .price {
+            background: #2d3f55;
+            border-color: #ffdb7c;
+        }
+
+        /* footer */
+        .footer-note {
+            border-top: 1px solid #27384b;
+            margin-top: 3rem;
+            padding: 2rem 0.5rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: #8fa5c0;
+        }
+
+        .footer-note .social i {
+            color: #f5c542;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: 0.2s;
+        }
+        .footer-note .social i:hover {
+            color: #ffd966;
+            text-shadow: 0 0 6px gold;
+        }
+    </style>
+</head>
+<body>
+<div class="overlay">
+    <div class="container">
+
+        <!-- VIDEO OTOMATIS DENGAN TAUTAN ANDA -->
+        <div class="video-hero">
+            <video controls autoplay muted loop playsinline>
+                <source src="https://files.catbox.moe/hts9b3.mp4" type="video/mp4">
+                Browser Anda tidak mendukung video tag.
+            </video>
+        </div>
+
+        <!-- hero + gambar bot -->
+        <div class="hero">
+            <div class="hero-text">
+                <h1>ELIANA ASISTEN</h1>
+                <div class="tagline">✨ Asisten pintar siap membantu 24/7 di WhatsApp</div>
+                <div class="info-bot">
+                    <p><i class="fas fa-robot"></i> <strong>Informasi Bot</strong> — Eliana adalah bot WhatsApp multifungsi dengan fitur group, downloader, tools script, dan game. Dikembangkan untuk kemudahan dan hiburan. Aktif selalu.</p>
+                    <p style="margin-top: 0.8rem;"><i class="fas fa-database"></i> 10.000+ pengguna · 200+ grup · response cepat</p>
+                </div>
+            </div>
+            <div class="bot-preview">
+                <img src="https://img2.pixhost.to/images/5918/697837485_alip-1771661535286.jpg" alt="Bot WhatsApp Eliana - preview tampilan chat" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22280%22%20height%3D%22280%22%20viewBox%3D%220%200%20280%20280%22%3E%3Crect%20width%3D%22280%22%20height%3D%22280%22%20fill%3D%22%231a2532%22%2F%3E%3Ctext%20x%3D%2230%22%20y%3D%22140%22%20font-family%3D%22Arial%22%20font-size%3D%2218%22%20fill%3D%22%23f5c542%22%3E%F0%9F%93%B1%20Eliana%20Preview%3C%2Ftext%3E%3C%2Fsvg%3E';">                
+                <p><i class="fas fa-camera"></i> tampilan bot · versi terbaru</p>
+            </div>
+        </div>
+
+        <!-- menu bot -->
+        <div class="section-title">
+            <span></span>
+            <h2>📌 Menu Bot</h2>
+            <span></span>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="menu-icon"><i class="fas fa-users"></i></div>
+                <h3>Group Menu</h3>
+                <p>Fitur lengkap untuk admin & member: anti link, welcome, poll, mute, info, dan 50+ fitur grup.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-icon"><i class="fas fa-download"></i></div>
+                <h3>Downloader</h3>
+                <p>Download video, musik, stories, reels dari TikTok, YT, IG, FB — tanpa batas, cepat!</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-icon"><i class="fas fa-terminal"></i></div>
+                <h3>Tools</h3>
+                <p>Buat script, konversi, encode, decode, QR, dan tools coding praktis lewat chat.</p>
+            </div>
+            <div class="menu-card">
+                <div class="menu-icon"><i class="fas fa-gamepad"></i></div>
+                <h3>Game</h3>
+                <p>Tebak angka, puzzle, trivia, suit, dan game seru lainnya main bareng bot.</p>
+            </div>
+        </div>
+
+        <!-- SEWA BOT + HARGA (LINK WHATSAPP AKTIF) -->
+        <div class="sewa-head">
+            <h2><i class="fas fa-crown" style="margin-right: 12px;"></i> SEWA BOT ELIANA</h2>
+            <i class="fas fa-star"></i>
+        </div>
+
+        <div class="price-grid">
+            <!-- 1 Day -->
+            <a href="https://wa.me/628816547953?text=Halo%20saya%20ingin%20sewa%20Bot%20Eliana%20paket%201%20Hari%20(IDR3.000).%0A%0AID%20Transaksi%3A%20TRX-240321-001%0A%0AProsedur%20Transaksi%3A%0A1.%20Transfer%20ke%20Bank%20BCA%20%2F%20BRI%20%28akan%20diberikan%20admin%29%0A2.%20Kirim%20bukti%20transfer%20ke%20nomor%20ini%0A3.%20Bot%20akan%20diaktifkan%20maksimal%205%20menit%0A%0ATerima%20kasih." class="price-card">
+                <div class="day">1 Day</div>
+                <div class="price">IDR3.000</div>
+                <div class="remark">coba sehari penuh</div>
+            </a>
+            <!-- 7 Day -->
+            <a href="https://wa.me/628816547953?text=Halo%20saya%20ingin%20sewa%20Bot%20Eliana%20paket%207%20Hari%20(IDR10.000).%0A%0AID%20Transaksi%3A%20TRX-240321-007%0A%0AProsedur%20Transaksi%3A%0A1.%20Transfer%20ke%20Bank%20BCA%20%2F%20BRI%20%28akan%20diberikan%20admin%29%0A2.%20Kirim%20bukti%20transfer%20ke%20nomor%20ini%0A3.%20Bot%20akan%20diaktifkan%20maksimal%205%20menit%0A%0ATerima%20kasih." class="price-card">
+                <div class="day">7 Day</div>
+                <div class="price">IDR10.000</div>
+                <div class="remark">hemat untuk seminggu</div>
+            </a>
+            <!-- 1 Month -->
+            <a href="https://wa.me/628816547953?text=Halo%20saya%20ingin%20sewa%20Bot%20Eliana%20paket%201%20Bulan%20(IDR15.000).%0A%0AID%20Transaksi%3A%20TRX-240321-030%0A%0AProsedur%20Transaksi%3A%0A1.%20Transfer%20ke%20Bank%20BCA%20%2F%20BRI%20%28akan%20diberikan%20admin%29%0A2.%20Kirim%20bukti%20transfer%20ke%20nomor%20ini%0A3.%20Bot%20akan%20diaktifkan%20maksimal%205%20menit%0A%0ATerima%20kasih." class="price-card">
+                <div class="day">1 Month</div>
+                <div class="price">IDR15.000</div>
+                <div class="remark">~ 30 hari akses penuh</div>
+            </a>
+            <!-- Permanen Akses -->
+            <a href="https://wa.me/628816547953?text=Halo%20saya%20ingin%20sewa%20Bot%20Eliana%20paket%20Permanen%20(IDR30.000).%0A%0AID%20Transaksi%3A%20TRX-240321-FOREVER%0A%0AProsedur%20Transaksi%3A%0A1.%20Transfer%20ke%20Bank%20BCA%20%2F%20BRI%20%28akan%20diberikan%20admin%29%0A2.%20Kirim%20bukti%20transfer%20ke%20nomor%20ini%0A3.%20Bot%20akan%20diaktifkan%20maksimal%205%20menit%0A%0ATerima%20kasih." class="price-card permanent">
+                <div class="day">Permanen</div>
+                <div class="price">IDR30.000</div>
+                <div class="remark">💎 akses seumur hidup + update gratis</div>
+            </a>
+        </div>
+
+        <!-- footer -->
+        <div class="footer-note">
+            <div>🌌 Eliana Asisten ·  <i class="fas fa-star"></i>  bot wa premium</div>
+            <div class="social">
+                <i class="fab fa-whatsapp"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fab fa-telegram"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 12px; margin: 2rem 0 0.5rem; color: #ffd966; font-size: 0.9rem; opacity: 0.5;">
+            <span>✦</span> <span>✧</span> <span>✦</span> <span>✧</span> <span>✦</span> <span>✧</span> <span>✦</span>
+        </div>
+
+    </div> <!-- container end -->
+</div> <!-- overlay end -->
+</body>
+</html>
